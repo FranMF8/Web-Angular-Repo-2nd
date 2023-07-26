@@ -27,7 +27,7 @@
       <div class="col">
         <ul class="list-group mt-4">
           <div class="list-group-item font-weight-bold">
-            <strong class="align-items-center">Estudiantes: </strong><span class="badge bg-secondary">{{studentArray.length}}</span>
+            <strong class="align-items-center">Estudiantes: </strong><span class="badge bg-secondary" *ngIf="studentArray">{{ studentArray.length }}</span>
             <button (click)="showList()" class="btn btn-secondary mt-1 me-2 float-end">{{listButtonText}}</button>
             <button (click)="getAll()" class="btn btn-secondary mt-1 me-2 float-end">↻</button>
             <button (click)="findByDNIActivate()" class="btn btn-secondary mt-1 me-2 float-end">{{buttonText}}</button>
