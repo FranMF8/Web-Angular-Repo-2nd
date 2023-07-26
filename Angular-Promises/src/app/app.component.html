@@ -35,7 +35,7 @@
           </div>
           <div *ngIf="!listVisible">
             <li *ngFor="let student of studentArray" class="list-group-item list-group-item-action" (click)="selectStudent(student)" [class.active]="student == selectedStudent">
-              <span class="badge bg-dark">{{ student.id }} </span> {{ student.firstName }} {{ student.lastName }} - DNI: {{ student.dni }} - Email: {{ student.email }}
+              <span class="badge bg-dark">{{ student.id }} </span><br><strong> {{ student.firstName }} {{ student.lastName }} </strong><br><strong>DNI:</strong> {{ student.dni }}<br><strong>Email:</strong> {{ student.email }}
             </li>
           </div>
         </ul>
