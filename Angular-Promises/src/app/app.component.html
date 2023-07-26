@@ -35,7 +35,7 @@
           </div>
           <div *ngIf="!listVisible">
             <li *ngFor="let student of studentArray" class="list-group-item list-group-item-action" (click)="selectStudent(student)" [class.active]="student == selectedStudent">
-              <span class="badge bg-dark">{{ student.id }} </span> {{ student.name }} - DNI: {{ student.dni }} - Email: {{ student.email }}
+              <span class="badge bg-dark">{{ student.id }} </span> {{ student.firstName }} {{ student.lastName }} - DNI: {{ student.dni }} - Email: {{ student.email }}
             </li>
           </div>
         </ul>
@@ -45,7 +45,10 @@
               <strong>Ingrese un nuevo alumno</strong>
             </div>
             <div class="form-group">
-              <input type="text" [(ngModel)]="selectedStudent.name" placeholder="Inserta un nombre" class="form-control">
+              <input type="text" [(ngModel)]="selectedStudent.firstName" placeholder="Inserta un nombre" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" [(ngModel)]="selectedStudent.lastName" placeholder="Inserta un apellido" class="form-control mt-1">
             </div>
             <div class="form-group">
               <input type="number" [(ngModel)]="selectedStudent.dni" placeholder="Inserta un dni" class="form-control mt-1">
@@ -102,7 +105,8 @@
           </div>
           <div class="card-body d-flex flex-column justify-content-center align-items-start">
             <div>
-              <div><strong>Nombre: </strong>{{foundStudent?.name}}</div>
+              <div><strong>Nombre: </strong>{{foundStudent?.firstName}}</div>
+              <div><strong>Apellido: </strong>{{foundStudent?.lastName}}</div>
               <div><strong>DNI: </strong>{{foundStudent?.dni}}</div>
               <div><strong>Email: </strong>{{foundStudent?.email}}</div>
             </div>

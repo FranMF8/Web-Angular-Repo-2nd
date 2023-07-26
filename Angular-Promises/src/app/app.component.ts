@@ -31,7 +31,7 @@ getAll() {
 
 submitStudent(toAddStudent: StudentModel) {
 
-  if((toAddStudent.name != null || toAddStudent.name === "") && (toAddStudent.dni != null || toAddStudent.dni === 0) && (toAddStudent.email != null || toAddStudent.email === ""))
+  if((toAddStudent.firstName != null || toAddStudent.firstName === "") && (toAddStudent.dni != null || toAddStudent.dni === 0) && (toAddStudent.email != null || toAddStudent.email === ""))
   {
     this.loginService.addStudent(toAddStudent).subscribe(response => {
       console.log(response);
@@ -46,7 +46,7 @@ submitStudent(toAddStudent: StudentModel) {
 }
 
 changeStudent(toModifyStudent: StudentModel) {
-  if((toModifyStudent.dni !== 0 && toModifyStudent.dni != null) && (toModifyStudent.name !== "" && toModifyStudent.name != null) && (toModifyStudent.email !== "" && toModifyStudent.email != null))
+  if((toModifyStudent.dni !== 0 && toModifyStudent.dni != null) && (toModifyStudent.firstName !== "" && toModifyStudent.firstName != null) && (toModifyStudent.email !== "" && toModifyStudent.email != null))
   {
     this.loginService.modifyStudent(toModifyStudent).subscribe(response => {
       console.log(response);
@@ -61,8 +61,8 @@ changeStudent(toModifyStudent: StudentModel) {
 
 }
 
-deleteRequest(toDeleteId: number) {
-  this.loginService.deleteStudent(toDeleteId).subscribe(response => {
+deleteRequest(student: StudentModel) {
+  this.loginService.deleteStudent(student).subscribe(response => {
     console.log(response);
     this.getAll();
   }, error => {
@@ -103,7 +103,7 @@ selectStudent(student: StudentModel) {
 
 deleteFromForm() {
   if(confirm('Estas seguro de querer eliminar al estudiante?')) {
-    this.deleteRequest(this.selectedStudent.id);
+    this.deleteRequest(this.selectedStudent);
   this.deselect();
   }
 }
@@ -130,7 +130,7 @@ changeFound() {
 
 findByDNI() {
   this.foundStudent = this.studentArray.find(student => student.dni == this.toFindStudent.dni)
-  if (this.foundStudent?.name && this.foundStudent !== null) {
+  if (this.foundStudent?.firstName && this.foundStudent !== null) {
     this.deselectChoose(this.foundStudent);
     this.found = true
   } else {
@@ -152,7 +152,7 @@ showList() {
 }
 
 copyDataToClipboard(student: StudentModel | undefined) {
-  const clipboardData = `Nombre: ${student?.name}\nDNI: ${student?.dni}\nEmail: ${student?.email}`;
+  const clipboardData = `Nombre: ${student?.firstName}\n Apellido: ${student?.lastName} DNI: ${student?.dni}\nEmail: ${student?.email}`;
 
   const tempTextarea = this.renderer.createElement('textarea');
   this.renderer.setAttribute(tempTextarea, 'style', 'position: absolute; top: -9999px');

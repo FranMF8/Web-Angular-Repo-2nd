@@ -6,23 +6,27 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
   providedIn: 'root'
 })
 export class StudentService {
-  URL: string = 'https://localhost:7117/api/Student/';
+  URL: string = 'https://3f09-181-231-122-56.ngrok-free.app/';
 
   constructor(private http : HttpClient) {}
 
   getAllStudents() {
-    return this.http.get(this.URL + "getAll")
+    return this.http.get(this.URL + "student/getAll")
+  }
+
+  getTotalStudents() {
+    return this.http.get(this.URL + "student/total")
   }
 
   addStudent(student: StudentModel) {
-    return this.http.post<any>(this.URL + "add", student);
+    return this.http.post<any>(this.URL + 'student', student);
   }
 
   modifyStudent(student: StudentModel) {
-    return this.http.post<any>(this.URL + "modify", student)
+    return this.http.post<any>(this.URL + 'student/' + student.id + "/update", student)
   }
 
-  deleteStudent(id: number) {
-    return this.http.delete(this.URL + "deleteStudent/" + id);
+  deleteStudent(student: StudentModel) {
+    return this.http.post(this.URL + 'student/' + student.id + "/delete", student);
   }
 }
