@@ -153,7 +153,7 @@ showList() {
 }
 
 copyDataToClipboard(student: StudentModel | undefined) {
-  const clipboardData = `Nombre: ${student?.firstName}\n Apellido: ${student?.lastName}\n DNI: ${student?.dni}\nEmail: ${student?.email}`;
+  const clipboardData = `Nombre: ${student?.firstName}\nApellido: ${student?.lastName}\nDNI: ${student?.dni}\nEmail: ${student?.email}`;
 
   const tempTextarea = this.renderer.createElement('textarea');
   this.renderer.setAttribute(tempTextarea, 'style', 'position: absolute; top: -9999px');
