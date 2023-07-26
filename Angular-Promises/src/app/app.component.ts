@@ -123,6 +123,7 @@ changeFound() {
     this.found = false;
     this.foundStudent = new StudentModel();
     this.deselect();
+    this.toFindStudent = new StudentModel();
   } else {
     this.found = true;
   }
@@ -152,7 +153,7 @@ showList() {
 }
 
 copyDataToClipboard(student: StudentModel | undefined) {
-  const clipboardData = `Nombre: ${student?.firstName}\n Apellido: ${student?.lastName} DNI: ${student?.dni}\nEmail: ${student?.email}`;
+  const clipboardData = `Nombre: ${student?.firstName}\n Apellido: ${student?.lastName}\n DNI: ${student?.dni}\nEmail: ${student?.email}`;
 
   const tempTextarea = this.renderer.createElement('textarea');
   this.renderer.setAttribute(tempTextarea, 'style', 'position: absolute; top: -9999px');
